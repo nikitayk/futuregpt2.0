@@ -93,6 +93,11 @@ function App() {
     // Refresh context before sending message
     const currentContext = await refreshContext();
 
+    const userMessage = addMessage({
+      role: 'user',
+      content: input,
+    });
+
     setInput('');
 
     try {
@@ -104,12 +109,12 @@ function App() {
       });
 
       // Get all messages including the new user message
-      const currentMessages = [...messages];
+      const updatedMessages = [...messages, userMessage];
       let assistantContent = '';
 
       // Stream response with context
       await sendMessage(
-        currentMessages,
+        updatedMessages,
         (chunk: string) => {
           assistantContent += chunk;
           setMessages((prev: Message[]) => 
