@@ -20,7 +20,12 @@ Result: Function executed successfully in demo mode.
 +
 +• **Result 1**: Relevant information about ${query}
 +• **Result 2**: Additional details and context
-+• **Result 3**: Related resources and links
++• **Result 3**: Related reso
+       }
+       )
+     }
+   }
+   )urces and links
 +
 +*This is a demo search response. In the full implementation, this would connect to real search APIs to provide current, accurate information from the web.*`;
        }
