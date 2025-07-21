@@ -195,27 +195,8 @@ export function useAI(config: AIConfig) {
 
       // Check if the response is just echoing the user's message
       if (aiResponse === lastMessage?.content) {
-        // If backend is just echoing, provide a fallback response
-        const fallbackResponse = `I understand you said: "${lastMessage?.content}". Let me provide a helpful response based on your query. This is a demo response since the backend might not be properly configured.`;
-        
-        if (onStream) {
-          // Simulate streaming for fallback response
-          let index = 0;
-          
-          const streamInterval = setInterval(() => {
-            if (index < fallbackResponse.length) {
-              const chunk = fallbackResponse.slice(index, index + 2);
-              onStream(chunk);
-              index += 2;
-            } else {
-              clearInterval(streamInterval);
-            }
-          }, 30);
-          
-          return fallbackResponse;
-        } else {
-          return fallbackResponse;
-        }
+        // If backend is just echoing, do nothing.
+        return;
       }
 
       if (onStream) {
